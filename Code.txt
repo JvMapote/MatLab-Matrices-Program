@@ -1,0 +1,656 @@
+classdef Matrix_Calculator < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                      matlab.ui.Figure
+        LowerTriangularMatrixBButton  matlab.ui.control.Button
+        LowerTriangularMatrixAButton  matlab.ui.control.Button
+        UpperTriangularMatrixBButton  matlab.ui.control.Button
+        UpperTriangularMatrixAButton  matlab.ui.control.Button
+        DiagonalCoefficientPanel      matlab.ui.container.Panel
+        EditField_34                  matlab.ui.control.NumericEditField
+        EditField_33                  matlab.ui.control.NumericEditField
+        EditField_32                  matlab.ui.control.NumericEditField
+        EditField_31                  matlab.ui.control.NumericEditField
+        EditField_30                  matlab.ui.control.NumericEditField
+        MatrixBLabel                  matlab.ui.control.Label
+        MatrixALabel                  matlab.ui.control.Label
+        EditField_29                  matlab.ui.control.NumericEditField
+        DiagonalCoefficientButton     matlab.ui.control.Button
+        DeterminantsBButton           matlab.ui.control.Button
+        DeterminantsAButton           matlab.ui.control.Button
+        DivideButton                  matlab.ui.control.Button
+        MultiplyButton                matlab.ui.control.Button
+        SubtractButton                matlab.ui.control.Button
+        AddButton                     matlab.ui.control.Button
+        DeterminantsPanel             matlab.ui.container.Panel
+        EditField_28                  matlab.ui.control.NumericEditField
+        ResultPanel                   matlab.ui.container.Panel
+        EditField_27                  matlab.ui.control.NumericEditField
+        EditField_26                  matlab.ui.control.NumericEditField
+        EditField_25                  matlab.ui.control.NumericEditField
+        EditField_24                  matlab.ui.control.NumericEditField
+        EditField_23                  matlab.ui.control.NumericEditField
+        EditField_22                  matlab.ui.control.NumericEditField
+        EditField_21                  matlab.ui.control.NumericEditField
+        EditField_20                  matlab.ui.control.NumericEditField
+        EditField_19                  matlab.ui.control.NumericEditField
+        MatrixBPanel                  matlab.ui.container.Panel
+        EditField_18                  matlab.ui.control.NumericEditField
+        EditField_17                  matlab.ui.control.NumericEditField
+        EditField_16                  matlab.ui.control.NumericEditField
+        EditField_15                  matlab.ui.control.NumericEditField
+        EditField_14                  matlab.ui.control.NumericEditField
+        EditField_13                  matlab.ui.control.NumericEditField
+        EditField_12                  matlab.ui.control.NumericEditField
+        EditField_11                  matlab.ui.control.NumericEditField
+        EditField_10                  matlab.ui.control.NumericEditField
+        MatrixAPanel                  matlab.ui.container.Panel
+        EditField_9                   matlab.ui.control.NumericEditField
+        EditField_8                   matlab.ui.control.NumericEditField
+        EditField_7                   matlab.ui.control.NumericEditField
+        EditField_6                   matlab.ui.control.NumericEditField
+        EditField_5                   matlab.ui.control.NumericEditField
+        EditField_4                   matlab.ui.control.NumericEditField
+        EditField_3                   matlab.ui.control.NumericEditField
+        EditField_2                   matlab.ui.control.NumericEditField
+        EditField                     matlab.ui.control.NumericEditField
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Value changed function: EditField
+        function EditFieldValueChanged(app, event)
+            global A
+            A(1,1) = app.EditField.Value;
+            
+        end
+
+        % Value changed function: EditField_2
+        function EditField_2ValueChanged(app, event)
+            global A
+            A(1,2) = app.EditField_2.Value;
+            
+        end
+
+        % Value changed function: EditField_3
+        function EditField_3ValueChanged(app, event)
+            global A
+            A(1,3) = app.EditField_3.Value;
+            
+        end
+
+        % Value changed function: EditField_4
+        function EditField_4ValueChanged(app, event)
+            global A
+            A(2,1) = app.EditField_4.Value;
+            
+        end
+
+        % Value changed function: EditField_5
+        function EditField_5ValueChanged(app, event)
+            global A
+            A(2,2) = app.EditField_5.Value;
+            
+        end
+
+        % Value changed function: EditField_6
+        function EditField_6ValueChanged(app, event)
+            global A
+            A(2,3) = app.EditField_6.Value;
+            
+        end
+
+        % Value changed function: EditField_7
+        function EditField_7ValueChanged(app, event)
+            global A
+            A(3,1) = app.EditField_7.Value;
+            
+        end
+
+        % Value changed function: EditField_8
+        function EditField_8ValueChanged(app, event)
+            global A
+            A(3,2) = app.EditField_8.Value;
+            
+        end
+
+        % Value changed function: EditField_9
+        function EditField_9ValueChanged(app, event)
+            global A
+            A(3,3) = app.EditField_9.Value;
+            
+        end
+
+        % Value changed function: EditField_10
+        function EditField_10ValueChanged(app, event)
+            global B
+            B(1,1) = app.EditField_10.Value;
+            
+        end
+
+        % Value changed function: EditField_11
+        function EditField_11ValueChanged(app, event)
+            global B
+            B(1,2) = app.EditField_11.Value;
+            
+        end
+
+        % Value changed function: EditField_12
+        function EditField_12ValueChanged(app, event)
+            global B
+            B(1,3) = app.EditField_12.Value;
+            
+        end
+
+        % Value changed function: EditField_13
+        function EditField_13ValueChanged(app, event)
+            global B
+            B(2,1) = app.EditField_13.Value;
+            
+        end
+
+        % Value changed function: EditField_14
+        function EditField_14ValueChanged(app, event)
+            global B
+            B(2,2) = app.EditField_14.Value;
+            
+        end
+
+        % Value changed function: EditField_15
+        function EditField_15ValueChanged(app, event)
+            global B
+            B(2,3) = app.EditField_15.Value;
+            
+        end
+
+        % Value changed function: EditField_16
+        function EditField_16ValueChanged(app, event)
+            global B
+            B(3,1) = app.EditField_16.Value;
+            
+        end
+
+        % Value changed function: EditField_17
+        function EditField_17ValueChanged(app, event)
+            global B
+            B(3,2) = app.EditField_17.Value;
+            
+        end
+
+        % Value changed function: EditField_18
+        function EditField_18ValueChanged(app, event)
+            global B
+            B(3,3) = app.EditField_18.Value;
+            
+        end
+
+        % Button pushed function: AddButton
+        function AddButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=A + B 
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: SubtractButton
+        function SubtractButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=A - B 
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: MultiplyButton
+        function MultiplyButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=A * B
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: DivideButton
+        function DivideButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=A / B
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: DeterminantsAButton
+        function DeterminantsAButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=det(A)
+            app.EditField_28.Value=C
+        end
+
+        % Button pushed function: DeterminantsBButton
+        function DeterminantsBButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=det(B)
+            app.EditField_28.Value=C
+        end
+
+        % Button pushed function: DiagonalCoefficientButton
+        function DiagonalCoefficientButtonPushed(app, event)
+          global A
+          global B
+          app.EditField_29.Value=A(1,1)
+          app.EditField_30.Value=A(2,2)
+          app.EditField_31.Value=A(3,3)
+          app.EditField_32.Value=B(1,1)
+          app.EditField_33.Value=B(2,2)
+          app.EditField_34.Value=B(3,3)
+
+          
+          
+          
+          
+        end
+
+        % Button pushed function: UpperTriangularMatrixAButton
+        function UpperTriangularMatrixAButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=triu(A)
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: UpperTriangularMatrixBButton
+        function UpperTriangularMatrixBButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=triu(B)
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: LowerTriangularMatrixAButton
+        function LowerTriangularMatrixAButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=tril(A)
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+
+        % Button pushed function: LowerTriangularMatrixBButton
+        function LowerTriangularMatrixBButtonPushed(app, event)
+            global A
+            global B 
+            global C
+            C=tril(B)
+            app.EditField_19.Value=C(1,1)
+            app.EditField_20.Value=C(1,2)
+            app.EditField_21.Value=C(1,3)
+            app.EditField_22.Value=C(2,1)
+            app.EditField_23.Value=C(2,2)
+            app.EditField_24.Value=C(2,3)
+            app.EditField_25.Value=C(3,1)
+            app.EditField_26.Value=C(3,2)
+            app.EditField_27.Value=C(3,3)
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 851 582];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create MatrixAPanel
+            app.MatrixAPanel = uipanel(app.UIFigure);
+            app.MatrixAPanel.Title = 'Matrix A';
+            app.MatrixAPanel.Position = [33 394 207 152];
+
+            % Create EditField
+            app.EditField = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField.ValueChangedFcn = createCallbackFcn(app, @EditFieldValueChanged, true);
+            app.EditField.Position = [20 97 47 21];
+
+            % Create EditField_2
+            app.EditField_2 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_2.ValueChangedFcn = createCallbackFcn(app, @EditField_2ValueChanged, true);
+            app.EditField_2.Position = [21 65 46 22];
+
+            % Create EditField_3
+            app.EditField_3 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_3.ValueChangedFcn = createCallbackFcn(app, @EditField_3ValueChanged, true);
+            app.EditField_3.Position = [21 30 46 22];
+
+            % Create EditField_4
+            app.EditField_4 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_4.ValueChangedFcn = createCallbackFcn(app, @EditField_4ValueChanged, true);
+            app.EditField_4.Position = [80 96 46 22];
+
+            % Create EditField_5
+            app.EditField_5 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_5.ValueChangedFcn = createCallbackFcn(app, @EditField_5ValueChanged, true);
+            app.EditField_5.Position = [81 65 46 22];
+
+            % Create EditField_6
+            app.EditField_6 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_6.ValueChangedFcn = createCallbackFcn(app, @EditField_6ValueChanged, true);
+            app.EditField_6.Position = [82 30 46 22];
+
+            % Create EditField_7
+            app.EditField_7 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_7.ValueChangedFcn = createCallbackFcn(app, @EditField_7ValueChanged, true);
+            app.EditField_7.Position = [144 96 46 22];
+
+            % Create EditField_8
+            app.EditField_8 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_8.ValueChangedFcn = createCallbackFcn(app, @EditField_8ValueChanged, true);
+            app.EditField_8.Position = [145 65 46 22];
+
+            % Create EditField_9
+            app.EditField_9 = uieditfield(app.MatrixAPanel, 'numeric');
+            app.EditField_9.ValueChangedFcn = createCallbackFcn(app, @EditField_9ValueChanged, true);
+            app.EditField_9.Position = [145 30 46 22];
+
+            % Create MatrixBPanel
+            app.MatrixBPanel = uipanel(app.UIFigure);
+            app.MatrixBPanel.Title = 'Matrix B';
+            app.MatrixBPanel.Position = [298 394 206 152];
+
+            % Create EditField_10
+            app.EditField_10 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_10.ValueChangedFcn = createCallbackFcn(app, @EditField_10ValueChanged, true);
+            app.EditField_10.Position = [21 101 46 22];
+
+            % Create EditField_11
+            app.EditField_11 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_11.ValueChangedFcn = createCallbackFcn(app, @EditField_11ValueChanged, true);
+            app.EditField_11.Position = [22 55 46 22];
+
+            % Create EditField_12
+            app.EditField_12 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_12.ValueChangedFcn = createCallbackFcn(app, @EditField_12ValueChanged, true);
+            app.EditField_12.Position = [22 8 46 22];
+
+            % Create EditField_13
+            app.EditField_13 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_13.ValueChangedFcn = createCallbackFcn(app, @EditField_13ValueChanged, true);
+            app.EditField_13.Position = [80 101 46 22];
+
+            % Create EditField_14
+            app.EditField_14 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_14.ValueChangedFcn = createCallbackFcn(app, @EditField_14ValueChanged, true);
+            app.EditField_14.Position = [80 55 46 22];
+
+            % Create EditField_15
+            app.EditField_15 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_15.ValueChangedFcn = createCallbackFcn(app, @EditField_15ValueChanged, true);
+            app.EditField_15.Position = [80 8 46 22];
+
+            % Create EditField_16
+            app.EditField_16 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_16.ValueChangedFcn = createCallbackFcn(app, @EditField_16ValueChanged, true);
+            app.EditField_16.Position = [145 101 46 22];
+
+            % Create EditField_17
+            app.EditField_17 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_17.ValueChangedFcn = createCallbackFcn(app, @EditField_17ValueChanged, true);
+            app.EditField_17.Position = [144 55 46 22];
+
+            % Create EditField_18
+            app.EditField_18 = uieditfield(app.MatrixBPanel, 'numeric');
+            app.EditField_18.ValueChangedFcn = createCallbackFcn(app, @EditField_18ValueChanged, true);
+            app.EditField_18.Position = [144 8 46 22];
+
+            % Create ResultPanel
+            app.ResultPanel = uipanel(app.UIFigure);
+            app.ResultPanel.Title = 'Result';
+            app.ResultPanel.Position = [565 394 243 152];
+
+            % Create EditField_19
+            app.EditField_19 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_19.Position = [21 96 46 22];
+
+            % Create EditField_20
+            app.EditField_20 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_20.Position = [20 65 46 22];
+
+            % Create EditField_21
+            app.EditField_21 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_21.Position = [20 30 46 22];
+
+            % Create EditField_22
+            app.EditField_22 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_22.Position = [100 96 46 22];
+
+            % Create EditField_23
+            app.EditField_23 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_23.Position = [101 65 46 22];
+
+            % Create EditField_24
+            app.EditField_24 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_24.Position = [102 30 46 22];
+
+            % Create EditField_25
+            app.EditField_25 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_25.Position = [173 96 46 22];
+
+            % Create EditField_26
+            app.EditField_26 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_26.Position = [174 65 46 22];
+
+            % Create EditField_27
+            app.EditField_27 = uieditfield(app.ResultPanel, 'numeric');
+            app.EditField_27.Position = [175 30 46 22];
+
+            % Create DeterminantsPanel
+            app.DeterminantsPanel = uipanel(app.UIFigure);
+            app.DeterminantsPanel.Title = 'Determinants';
+            app.DeterminantsPanel.Position = [650 261 158 97];
+
+            % Create EditField_28
+            app.EditField_28 = uieditfield(app.DeterminantsPanel, 'numeric');
+            app.EditField_28.Position = [17 35 125 26];
+
+            % Create AddButton
+            app.AddButton = uibutton(app.UIFigure, 'push');
+            app.AddButton.ButtonPushedFcn = createCallbackFcn(app, @AddButtonPushed, true);
+            app.AddButton.Position = [55 336 100 22];
+            app.AddButton.Text = 'Add';
+
+            % Create SubtractButton
+            app.SubtractButton = uibutton(app.UIFigure, 'push');
+            app.SubtractButton.ButtonPushedFcn = createCallbackFcn(app, @SubtractButtonPushed, true);
+            app.SubtractButton.Position = [54 281 100 22];
+            app.SubtractButton.Text = 'Subtract';
+
+            % Create MultiplyButton
+            app.MultiplyButton = uibutton(app.UIFigure, 'push');
+            app.MultiplyButton.ButtonPushedFcn = createCallbackFcn(app, @MultiplyButtonPushed, true);
+            app.MultiplyButton.Position = [55 240 100 22];
+            app.MultiplyButton.Text = 'Multiply';
+
+            % Create DivideButton
+            app.DivideButton = uibutton(app.UIFigure, 'push');
+            app.DivideButton.ButtonPushedFcn = createCallbackFcn(app, @DivideButtonPushed, true);
+            app.DivideButton.Position = [54 186 100 22];
+            app.DivideButton.Text = 'Divide';
+
+            % Create DeterminantsAButton
+            app.DeterminantsAButton = uibutton(app.UIFigure, 'push');
+            app.DeterminantsAButton.ButtonPushedFcn = createCallbackFcn(app, @DeterminantsAButtonPushed, true);
+            app.DeterminantsAButton.Position = [651 227 100 22];
+            app.DeterminantsAButton.Text = 'Determinants A';
+
+            % Create DeterminantsBButton
+            app.DeterminantsBButton = uibutton(app.UIFigure, 'push');
+            app.DeterminantsBButton.ButtonPushedFcn = createCallbackFcn(app, @DeterminantsBButtonPushed, true);
+            app.DeterminantsBButton.Position = [652 186 100 22];
+            app.DeterminantsBButton.Text = 'Determinants B';
+
+            % Create DiagonalCoefficientButton
+            app.DiagonalCoefficientButton = uibutton(app.UIFigure, 'push');
+            app.DiagonalCoefficientButton.ButtonPushedFcn = createCallbackFcn(app, @DiagonalCoefficientButtonPushed, true);
+            app.DiagonalCoefficientButton.Position = [421 103 123 22];
+            app.DiagonalCoefficientButton.Text = 'Diagonal Coefficient';
+
+            % Create DiagonalCoefficientPanel
+            app.DiagonalCoefficientPanel = uipanel(app.UIFigure);
+            app.DiagonalCoefficientPanel.Title = 'Diagonal Coefficient';
+            app.DiagonalCoefficientPanel.Position = [352 137 260 221];
+
+            % Create EditField_29
+            app.EditField_29 = uieditfield(app.DiagonalCoefficientPanel, 'numeric');
+            app.EditField_29.Position = [14 165 100 22];
+
+            % Create MatrixALabel
+            app.MatrixALabel = uilabel(app.DiagonalCoefficientPanel);
+            app.MatrixALabel.Position = [33 49 49 22];
+            app.MatrixALabel.Text = 'Matrix A';
+
+            % Create MatrixBLabel
+            app.MatrixBLabel = uilabel(app.DiagonalCoefficientPanel);
+            app.MatrixBLabel.Position = [152 49 50 22];
+            app.MatrixBLabel.Text = 'Matrix B';
+
+            % Create EditField_30
+            app.EditField_30 = uieditfield(app.DiagonalCoefficientPanel, 'numeric');
+            app.EditField_30.Position = [15 124 100 22];
+
+            % Create EditField_31
+            app.EditField_31 = uieditfield(app.DiagonalCoefficientPanel, 'numeric');
+            app.EditField_31.Position = [16 82 100 22];
+
+            % Create EditField_32
+            app.EditField_32 = uieditfield(app.DiagonalCoefficientPanel, 'numeric');
+            app.EditField_32.Position = [137 165 100 22];
+
+            % Create EditField_33
+            app.EditField_33 = uieditfield(app.DiagonalCoefficientPanel, 'numeric');
+            app.EditField_33.Position = [138 124 100 22];
+
+            % Create EditField_34
+            app.EditField_34 = uieditfield(app.DiagonalCoefficientPanel, 'numeric');
+            app.EditField_34.Position = [139 90 100 22];
+
+            % Create UpperTriangularMatrixAButton
+            app.UpperTriangularMatrixAButton = uibutton(app.UIFigure, 'push');
+            app.UpperTriangularMatrixAButton.ButtonPushedFcn = createCallbackFcn(app, @UpperTriangularMatrixAButtonPushed, true);
+            app.UpperTriangularMatrixAButton.Position = [170 336 152 22];
+            app.UpperTriangularMatrixAButton.Text = 'Upper Triangular Matrix A';
+
+            % Create UpperTriangularMatrixBButton
+            app.UpperTriangularMatrixBButton = uibutton(app.UIFigure, 'push');
+            app.UpperTriangularMatrixBButton.ButtonPushedFcn = createCallbackFcn(app, @UpperTriangularMatrixBButtonPushed, true);
+            app.UpperTriangularMatrixBButton.Position = [170 282 152 22];
+            app.UpperTriangularMatrixBButton.Text = 'Upper Triangular Matrix B';
+
+            % Create LowerTriangularMatrixAButton
+            app.LowerTriangularMatrixAButton = uibutton(app.UIFigure, 'push');
+            app.LowerTriangularMatrixAButton.ButtonPushedFcn = createCallbackFcn(app, @LowerTriangularMatrixAButtonPushed, true);
+            app.LowerTriangularMatrixAButton.Position = [170 240 152 22];
+            app.LowerTriangularMatrixAButton.Text = 'Lower Triangular Matrix A';
+
+            % Create LowerTriangularMatrixBButton
+            app.LowerTriangularMatrixBButton = uibutton(app.UIFigure, 'push');
+            app.LowerTriangularMatrixBButton.ButtonPushedFcn = createCallbackFcn(app, @LowerTriangularMatrixBButtonPushed, true);
+            app.LowerTriangularMatrixBButton.Position = [171 186 152 22];
+            app.LowerTriangularMatrixBButton.Text = 'Lower Triangular Matrix B';
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = Matrix_Calculator
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
